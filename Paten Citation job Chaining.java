@@ -1,4 +1,4 @@
-// The program here 
+// The program here generates patent citation integrating multiple jobs via job chaining
 import java.io.IOException;
 import java.util.Iterator;
 
