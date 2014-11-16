@@ -17,25 +17,12 @@ import org.apache.hadoop.util.ToolRunner;
 class WCMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 	private static IntWritable ONE = new IntWritable(1);
 
-	static enum Number {
-		One, Two, Three, Four
-	};
-
 	@Override
 	public void map(LongWritable key, Text value, Context context)
 			throws IOException, InterruptedException {
 		String tokens[] = value.toString().split(" ");
 		for (String word : tokens) {
 			context.write(new Text(word), ONE);
-			if (word.length() == 1)
-				context.getCounter(Number.One).increment(1);
-			else if (word.length() == 2)
-				context.getCounter(Number.Two).increment(1);
-			else if (word.length() == 3)
-				context.getCounter(Number.Three).increment(1);
-			else if (word.length() == 4)
-				context.getCounter(Number.Four).increment(1);
-
 		}
 
 	}
